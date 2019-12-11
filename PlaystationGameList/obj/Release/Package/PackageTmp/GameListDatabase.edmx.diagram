@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3b32e3bfcac346b99c1ee7ce0c871ae2" Name="Diagram1" ZoomLevel="86">
+        <EntityTypeShape EntityType="GameListDatabaseModel.Developer" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GameListDatabaseModel.Game" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GameListDatabaseModel.GameDevMap" Width="1.5" PointX="3" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GameListDatabaseModel.GameGenreMap" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GameListDatabaseModel.GamePlatformMap" Width="1.5" PointX="3" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GameListDatabaseModel.GamePublisherMap" Width="1.5" PointX="6" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GameListDatabaseModel.Genre" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GameListDatabaseModel.Platform" Width="1.5" PointX="0.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GameListDatabaseModel.Publisher" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="GameListDatabaseModel.FK__GameDevMa__DevID__5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="GameListDatabaseModel.FK__GameDevMa__GameI__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="GameListDatabaseModel.FK__GameGenre__GameI__571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="GameListDatabaseModel.FK__GamePlatf__GameI__5AEE82B9" ManuallyRouted="false" />
+        <AssociationConnector Association="GameListDatabaseModel.FK__GamePubli__GameI__5EBF139D" ManuallyRouted="false" />
+        <AssociationConnector Association="GameListDatabaseModel.FK__GameGenre__Genre__5812160E" ManuallyRouted="false" />
+        <AssociationConnector Association="GameListDatabaseModel.FK__GamePlatf__Platf__5BE2A6F2" ManuallyRouted="false" />
+        <AssociationConnector Association="GameListDatabaseModel.FK__GamePubli__Publi__5FB337D6" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

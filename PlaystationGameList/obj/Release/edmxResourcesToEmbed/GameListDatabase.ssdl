@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GameListDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Developer">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Game">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="ReleaseDate" Type="date" Nullable="false" />
+    <Property Name="PlayerCount" Type="int" Nullable="false" />
+    <Property Name="BoxArtPath" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GameDevMap">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GameID" Type="int" />
+    <Property Name="DevID" Type="int" />
+  </EntityType>
+  <EntityType Name="GameGenreMap">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GameID" Type="int" />
+    <Property Name="GenreID" Type="int" />
+  </EntityType>
+  <EntityType Name="GamePlatformMap">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GameID" Type="int" />
+    <Property Name="PlatformID" Type="int" />
+  </EntityType>
+  <EntityType Name="GamePublisherMap">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GameID" Type="int" />
+    <Property Name="PublisherID" Type="int" />
+  </EntityType>
+  <EntityType Name="Genre">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Platform">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Publisher">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__GameDevMa__DevID__5441852A">
+    <End Role="Developer" Type="Self.Developer" Multiplicity="0..1" />
+    <End Role="GameDevMap" Type="Self.GameDevMap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Developer">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="GameDevMap">
+        <PropertyRef Name="DevID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__GameDevMa__GameI__534D60F1">
+    <End Role="Game" Type="Self.Game" Multiplicity="0..1" />
+    <End Role="GameDevMap" Type="Self.GameDevMap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Game">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="GameDevMap">
+        <PropertyRef Name="GameID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__GameGenre__GameI__571DF1D5">
+    <End Role="Game" Type="Self.Game" Multiplicity="0..1" />
+    <End Role="GameGenreMap" Type="Self.GameGenreMap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Game">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="GameGenreMap">
+        <PropertyRef Name="GameID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__GameGenre__Genre__5812160E">
+    <End Role="Genre" Type="Self.Genre" Multiplicity="0..1" />
+    <End Role="GameGenreMap" Type="Self.GameGenreMap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Genre">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="GameGenreMap">
+        <PropertyRef Name="GenreID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__GamePlatf__GameI__5AEE82B9">
+    <End Role="Game" Type="Self.Game" Multiplicity="0..1" />
+    <End Role="GamePlatformMap" Type="Self.GamePlatformMap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Game">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="GamePlatformMap">
+        <PropertyRef Name="GameID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__GamePlatf__Platf__5BE2A6F2">
+    <End Role="Platform" Type="Self.Platform" Multiplicity="0..1" />
+    <End Role="GamePlatformMap" Type="Self.GamePlatformMap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Platform">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="GamePlatformMap">
+        <PropertyRef Name="PlatformID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__GamePubli__GameI__5EBF139D">
+    <End Role="Game" Type="Self.Game" Multiplicity="0..1" />
+    <End Role="GamePublisherMap" Type="Self.GamePublisherMap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Game">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="GamePublisherMap">
+        <PropertyRef Name="GameID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__GamePubli__Publi__5FB337D6">
+    <End Role="Publisher" Type="Self.Publisher" Multiplicity="0..1" />
+    <End Role="GamePublisherMap" Type="Self.GamePublisherMap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Publisher">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="GamePublisherMap">
+        <PropertyRef Name="PublisherID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="GameListDatabaseModelStoreContainer">
+    <EntitySet Name="Developer" EntityType="Self.Developer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Game" EntityType="Self.Game" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GameDevMap" EntityType="Self.GameDevMap" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GameGenreMap" EntityType="Self.GameGenreMap" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GamePlatformMap" EntityType="Self.GamePlatformMap" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GamePublisherMap" EntityType="Self.GamePublisherMap" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Genre" EntityType="Self.Genre" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Platform" EntityType="Self.Platform" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Publisher" EntityType="Self.Publisher" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__GameDevMa__DevID__5441852A" Association="Self.FK__GameDevMa__DevID__5441852A">
+      <End Role="Developer" EntitySet="Developer" />
+      <End Role="GameDevMap" EntitySet="GameDevMap" />
+    </AssociationSet>
+    <AssociationSet Name="FK__GameDevMa__GameI__534D60F1" Association="Self.FK__GameDevMa__GameI__534D60F1">
+      <End Role="Game" EntitySet="Game" />
+      <End Role="GameDevMap" EntitySet="GameDevMap" />
+    </AssociationSet>
+    <AssociationSet Name="FK__GameGenre__GameI__571DF1D5" Association="Self.FK__GameGenre__GameI__571DF1D5">
+      <End Role="Game" EntitySet="Game" />
+      <End Role="GameGenreMap" EntitySet="GameGenreMap" />
+    </AssociationSet>
+    <AssociationSet Name="FK__GameGenre__Genre__5812160E" Association="Self.FK__GameGenre__Genre__5812160E">
+      <End Role="Genre" EntitySet="Genre" />
+      <End Role="GameGenreMap" EntitySet="GameGenreMap" />
+    </AssociationSet>
+    <AssociationSet Name="FK__GamePlatf__GameI__5AEE82B9" Association="Self.FK__GamePlatf__GameI__5AEE82B9">
+      <End Role="Game" EntitySet="Game" />
+      <End Role="GamePlatformMap" EntitySet="GamePlatformMap" />
+    </AssociationSet>
+    <AssociationSet Name="FK__GamePlatf__Platf__5BE2A6F2" Association="Self.FK__GamePlatf__Platf__5BE2A6F2">
+      <End Role="Platform" EntitySet="Platform" />
+      <End Role="GamePlatformMap" EntitySet="GamePlatformMap" />
+    </AssociationSet>
+    <AssociationSet Name="FK__GamePubli__GameI__5EBF139D" Association="Self.FK__GamePubli__GameI__5EBF139D">
+      <End Role="Game" EntitySet="Game" />
+      <End Role="GamePublisherMap" EntitySet="GamePublisherMap" />
+    </AssociationSet>
+    <AssociationSet Name="FK__GamePubli__Publi__5FB337D6" Association="Self.FK__GamePubli__Publi__5FB337D6">
+      <End Role="Publisher" EntitySet="Publisher" />
+      <End Role="GamePublisherMap" EntitySet="GamePublisherMap" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
