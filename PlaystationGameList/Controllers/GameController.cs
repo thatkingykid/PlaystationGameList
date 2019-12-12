@@ -29,5 +29,11 @@ namespace PlaystationGameList.Controllers
                 return PartialView("_GameList", returnModels);
             }
         }
+
+        public ActionResult _NewGame()
+        {
+            var model = new CreateGameFormModel();
+            return PartialView(model);
+        }
     }
 }

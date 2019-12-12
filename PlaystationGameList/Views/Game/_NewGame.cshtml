@@ -1,0 +1,46 @@
+﻿@model PlaystationGameList.Models.Game_Models.CreateGameFormModel
+<div class="jumbotron add-game-panel">
+    <div class="container">
+        @using (Ajax.BeginForm("AddGame", "Game", new AjaxOptions { HttpMethod = "POST", OnSuccess = "gameAddSuccess", OnFailure = "gameAddFailure" }, new
+        {
+            @class = "form-horizontal",
+            role = "form"
+        }))
+        {
+            <div class="col-lg-3">
+                <h2>box art manager here</h2>
+            </div>
+            <div class="col-lg-9">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <h6 class="control-label">Name:</h6>
+                    </div>
+                    <div class="col-lg-8">
+                        @Html.TextBoxFor(x => x.Name, new { @class = "form-control", autocomplete = "off", @placeholder = "Please enter the name of the game" })
+                        @Html.ValidationMessageFor(x => x.Name, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-lg-4">
+                        <h6 class="control-label">Developer:</h6>
+                    </div>
+                    <div class="col-lg-8">
+                        @Html.TextBoxFor(x => x.Developer, new { @class = "form-control multiselect", autocomplete = "off", @placeholder = "Please enter the Developer(s)", style = "width: 60%" })
+                        @Html.ValidationMessageFor(x => x.Developer, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-lg-4">
+                        <h6 class="control-label">Publisher:</h6>
+                    </div>
+                    <div class="col-lg-8">
+                        @Html.TextBoxFor(x => x.Publisher, new { @class = "form-control multiselect", autocomplete = "off", @placeholder = "Please enter the Publisher(s)", style = "width: 60%" })
+                        @Html.ValidationMessageFor(x => x.Publisher, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
