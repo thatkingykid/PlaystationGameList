@@ -17,9 +17,11 @@ namespace PlaystationGameList.Models.Game_Models
         [Required]
         public string Genre { get; set; }
         [Required]
-        public DateTime ReleaseDate { get; set; }
+        public string ReleaseDate { get; set; }
         [Required]
         public int PlayerCount { get; set; }
         public string BoxArtPath { get; set; }
+        [Required]
+        public string Platform { get; set; }
     }
 }

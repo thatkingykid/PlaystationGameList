@@ -17,5 +17,17 @@
             }
         }
     })
+
+    $('.datepicker').datepicker({
+        format: 'dd/mm/yyyy'
+    })
 })
 
+$.validator.setDefaults({
+    ignore: ':hidden:not([class~=selectized]),:hidden > .selectized, .selectize-control .selectize-input input'
+})
+
+function gameAddSuccess(ajaxContent) {
+    $('#gameList').html("");
+    $('#gameList').append(ajaxContent);
+}

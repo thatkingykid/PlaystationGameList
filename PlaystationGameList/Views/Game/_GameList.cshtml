@@ -1,3 +1,22 @@
 ﻿@model List<PlaystationGameList.Models.Game_Models.GameCollapsedViewModel>
 
-<h2>poop</h2>
+<div class="container">
+    @foreach (var item in Model)
+    {
+        <div class="jumbotron game-item" data-id="@item.ID">
+            <div class="container">
+                <div class="col-lg-12">
+                    <img class="img-responsive" src="@item.ImagePath" />
+                    <br />
+                    <h3 class="h3">@item.Title</h3>
+                    <div class="row">
+                        @foreach (var plat in item.Platforms)
+                        {
+                            <h4 class="h4">@plat</h4>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
